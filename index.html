@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101611">
+  <title>Stock Legends — Oval Racing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <canvas id="scene" aria-label="Stock car racing scene"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="topbar">
+      <button class="brand" data-screen="home" aria-label="Stock Legends home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>STOCK<span class="brand-light">LEGENDS</span></span>
+      </button>
+      <div class="top-meta"><span class="live-dot"></span><span>SEASON 01</span><span class="meta-divider"></span><span>OVAL SERIES</span></div>
+      <button class="icon-button" data-screen="settings" aria-label="Settings"><span class="gear-icon">⚙</span><span class="settings-word">SETTINGS</span></button>
+    </header>
+    <section id="screen-home" class="screen active">
+      <div class="home-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE SHORT TRACK STARTS HERE</p>
+        <h1>BUILT TO<br><em>RACE.</em></h1>
+        <p class="hero-desc">Find your line. Hold your nerve.<br>Make every lap count.</p>
+        <div class="home-actions">
+          <button class="primary-button" data-screen="race-setup"><span>START A RACE</span><b>↗</b></button>
+          <button class="text-button" data-screen="servers"><span class="play-small">▶</span> MULTIPLAYER LOBBY</button>
+          <button class="text-button" data-screen="garage"><span class="play-small">✦</span> GARAGE &amp; CUSTOMIZE</button>
+        </div>
+        <div class="home-footnote"><span>01</span><i></i> FOUR ERAS. ONE OVAL.</div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-car-wrap"><div class="car-shadow"></div><svg class="hero-car" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+          <path d="M77 202 103 170l51-15 58-56q20-18 50-19l109-1q34 0 53 24l42 48 93 23 25 22-11 38H82z" fill="#e9e9df" stroke="#17201b" stroke-width="8" stroke-linejoin="round"/>
+          <path d="m218 155 47-53q8-9 24-10l94-1q17 0 28 14l39 50z" fill="#263a37" stroke="#17201b" stroke-width="7" stroke-linejoin="round"/>
+          <path d="m291 94-4 60m96-60 12 61" stroke="#a9b5aa" stroke-width="5"/>
+          <path d="M81 204h498l-5 24H85z" fill="#db342d" stroke="#17201b" stroke-width="6"/>
+          <path d="M237 171h203" stroke="#dc332c" stroke-width="13"/>
+          <path d="m126 166 53-13-5 28h-57z" fill="#cf352e" stroke="#17201b" stroke-width="5"/>
+          <path d="M149 182h28m326 2h34" stroke="#f6f1dc" stroke-width="8"/>
+          <circle cx="180" cy="226" r="39" fill="#161b19" stroke="#080b0a" stroke-width="8"/><circle cx="180" cy="226" r="20" fill="#87928a" stroke="#c8d0c5" stroke-width="5"/><circle cx="477" cy="226" r="39" fill="#161b19" stroke="#080b0a" stroke-width="8"/><circle cx="477" cy="226" r="20" fill="#87928a" stroke="#c8d0c5" stroke-width="5"/>
+          <path d="M160 53h366v12H160z" fill="#e33930" stroke="#17201b" stroke-width="7"/><path d="M185 54v34m316-34v34" stroke="#17201b" stroke-width="8"/>
+          <text x="313" y="137" fill="#f7f3e7" font-family="Arial" font-weight="900" font-size="40" text-anchor="middle">24</text>
+          <text x="323" y="193" fill="#e9e9df" font-family="Arial" font-weight="900" font-size="18" text-anchor="middle" letter-spacing="3">STOCK LEGENDS</text>
+        </svg></div>
+        <div class="hero-stats"><div><b>04</b><span>CAR GENERATIONS</span></div><i></i><div><b>14</b><span>RIVALS ON TRACK</span></div><i></i><div><b>∞</b><span>WAYS TO RACE</span></div></div>
+        <div class="speed-lines"></div>
+      </div>
+      <div class="home-bottom"><span>AN ORIGINAL OVAL RACING EXPERIENCE</span><span>SCROLL LESS. RACE MORE. <b>↗</b></span></div>
+    </section>
+    <section id="screen-race-setup" class="screen panel-screen">
+      <div class="panel-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> SINGLE PLAYER</p><h2>RACE <em>WEEKEND</em></h2></div><button class="back-button" data-screen="home">← BACK</button></div>
+      <div class="setup-grid">
+        <div class="setup-card main-setup">
+          <div class="card-label">01 / YOUR CAR</div>
+          <div class="car-preview-mini"><div class="mini-car" id="setup-car"></div><div class="preview-glow"></div></div>
+          <div class="field-row"><label for="setup-model">GENERATION</label><select id="setup-model"><option value="Next Gen">NEXT GEN · 2022+</option><option value="Gen 6">GEN 6 · 2013–2021</option><option value="Gen 5">GEN 5 · 2007–2012</option><option value="Gen 4">GEN 4 · 1981–2006</option></select></div>
+          <div class="field-row"><label for="setup-track">TRACK</label><select id="setup-track"><option>Daytona International</option><option>Talladega Superspeedway</option><option>Sunset Short Track</option></select></div>
+        </div>
+        <div class="setup-card race-details">
+          <div class="card-label">02 / RACE FORMAT</div>
+          <div class="detail-number"><strong>03</strong><span>LAPS<br>TO VICTORY</span></div>
+          <div class="range-row"><div><label for="ai-count">GRID SIZE</label><span id="ai-count-value">15 CARS</span></div><input id="ai-count" type="range" min="4" max="15" value="15"></div>
+          <div class="toggle-row"><div><strong>RANDOMIZED RIVALS</strong><span>Fresh liveries every race</span></div><button class="toggle on" id="random-toggle" aria-label="Toggle randomized liveries"><i></i></button></div>
+          <div class="race-note"><span>◎</span><p>Keep it clean or trade paint.<br>Damage is on. The checkered flag is earned.</p></div>
+          <button id="start-race" class="primary-button wide"><span>GREEN FLAG</span><b>↗</b></button>
+        </div>
+      </div>
+      <div class="bottom-hint">WASD / ARROWS TO DRIVE <span>·</span> SPACE TO BRAKE <span>·</span> R TO RESET</div>
+    </section>
+    <section id="screen-garage" class="screen panel-screen">
+      <div class="panel-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> THE WORKSHOP</p><h2>MAKE IT <em>YOURS</em></h2></div><button class="back-button" data-screen="home">← BACK</button></div>
+      <div class="garage-layout">
+        <div class="garage-preview"><div class="garage-tag">GARAGE / 01</div><div class="garage-light"></div><div id="garage-car" class="garage-car"></div><div class="garage-spec"><b id="garage-model-label">NEXT GEN</b><span>STOCK CAR · OVAL SPEC</span></div></div>
+        <div class="garage-controls">
+          <div class="card-label">CHASSIS</div><div class="generation-list" id="generation-list"></div>
+          <div class="card-label decal-label">LIVERY & DECALS</div>
+          <div class="swatches" id="swatches" aria-label="Paint color"></div>
+          <div class="field-row"><label for="car-number">CAR NUMBER</label><input id="car-number" type="number" min="0" max="99" value="24"></div>
+          <div class="decal-options"><button class="decal-chip active" data-decal="stripe">RACING STRIPE</button><button class="decal-chip" data-decal="sponsor">SPONSOR</button><button class="decal-chip" data-decal="clean">CLEAN</button></div>
+          <div class="garage-tip">Your livery is saved automatically and will follow you onto the track.</div>
+        </div>
+      </div>
+      <div class="bottom-hint">BUILT IN THE GARAGE. PROVEN ON THE OVAL.</div>
+    </section>
+    <section id="screen-servers" class="screen panel-screen">
+      <div class="panel-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> ONLINE RACING</p><h2>FIND YOUR <em>GRID</em></h2></div><button class="back-button" data-screen="home">← BACK</button></div>
+      <div class="server-note"><span class="live-dot"></span><div><b>COMMUNITY SERVERS</b><small>Browse a room or start your own session</small></div><button class="host-button" id="host-server">＋ HOST ROOM</button></div>
+      <div class="server-filters"><span>GENERATION</span><button class="filter-pill active" data-filter="all">ALL GRIDS</button><button class="filter-pill" data-filter="Gen 4">GEN 4</button><button class="filter-pill" data-filter="Gen 5">GEN 5</button><button class="filter-pill" data-filter="Gen 6">GEN 6</button><button class="filter-pill" data-filter="Next Gen">NEXT GEN</button><span class="server-cap">MAX 15 DRIVERS · 100 SPECTATORS</span></div>
+      <div class="server-list" id="server-list"></div>
+      <div class="bottom-hint">MULTIPLAYER PREVIEW <span>·</span> ROOMS ARE SIMULATED LOCALLY IN THIS BUILD</div>
+    </section>
+    <section id="screen-settings" class="screen panel-screen">
+      <div class="panel-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> TUNE YOUR EXPERIENCE</p><h2>GAME <em>SETTINGS</em></h2></div><button class="back-button" data-screen="home">← BACK</button></div>
+      <div class="settings-grid">
+        <div class="settings-card"><div class="card-label">VIDEO</div><div class="setting-row"><div><b>GRAPHICS QUALITY</b><small>Adjust scene detail and visual effects</small></div><select id="quality-select"><option value="high">HIGH</option><option value="medium">MEDIUM</option><option value="low">LOW</option></select></div><div class="setting-row"><div><b>SCREEN SHAKE</b><small>Impact feedback during contact</small></div><button class="toggle on" id="shake-toggle"><i></i></button></div></div>
+        <div class="settings-card"><div class="card-label">CONTROLS</div><div class="setting-row vertical"><div><b>STEERING SENSITIVITY</b><small>Set how quickly your car responds</small></div><div class="sensitivity"><input id="sensitivity" type="range" min="35" max="130" value="78"><span id="sensitivity-value">78%</span></div></div><div class="setting-row"><div><b>DRIVE INPUT</b><small>Keyboard, controller or touch controls</small></div><span class="setting-badge">AUTO</span></div></div>
+        <div class="settings-card settings-about"><div class="card-label">ABOUT THIS BUILD</div><p>Stock Legends is an original, single-player oval racing game. Online rooms are local mock lobbies; real network play is not connected in this build.</p><button id="reset-settings" class="text-button">RESET PREFERENCES ↺</button></div>
+      </div>
+      <div class="bottom-hint">SETTINGS ARE SAVED AUTOMATICALLY</div>
+    </section>
+    <section id="screen-race" class="screen race-screen">
+      <div class="race-top"><button class="race-back" id="pause-button">Ⅱ <span>PAUSE</span></button><div class="race-event"><b id="race-track-label">DAYTONA INTERNATIONAL</b><span>OVAL CUP · ROUND 01</span></div><div class="race-lap"><span>LAP</span><b id="lap-display">01 / 03</b></div></div>
+      <div class="race-status"><div><span class="status-dot"></span><b id="race-state">GREEN FLAG</b></div><div id="position-display">P 15 <span>/ 15</span></div></div>
+      <div class="standings" id="standings"></div>
+      <div class="race-bottom"><div class="speedo"><div><strong id="speed-value">000</strong><span>MPH</span></div><div class="speedo-bar"><i id="speed-bar"></i></div><div class="gear"><span>GEAR</span><b id="gear-value">1</b></div></div><div class="damage-box"><span>CAR CONDITION</span><div class="damage-track"><i id="damage-bar"></i></div><b id="damage-value">100%</b></div></div>
+      <div class="race-controls"><button data-control="left">◀</button><button data-control="brake">▼</button><button data-control="gas">▲</button><button data-control="right">▶</button></div>
+      <div class="race-toast" id="race-toast"></div>
+      <div class="pause-overlay" id="pause-overlay"><div class="pause-card"><p class="eyebrow"><span class="eyebrow-line"></span> TAKE A BREATHER</p><h2>RACE <em>PAUSED</em></h2><button class="primary-button wide" id="resume-race"><span>BACK TO THE TRACK</span><b>↗</b></button><button class="text-button" id="quit-race">EXIT TO GARAGE</button></div></div>
+      <div class="results-overlay" id="results-overlay"><div class="results-card"><p class="eyebrow"><span class="eyebrow-line"></span> CHECKERED FLAG</p><div id="results-icon">🏁</div><h2 id="results-title">RACE <em>COMPLETE</em></h2><p id="results-copy"></p><div class="results-stats"><div><b id="result-position">01</b><span>FINISH</span></div><div><b id="result-laps">03</b><span>LAPS</span></div><div><b id="result-damage">00%</b><span>DAMAGE</span></div></div><button class="primary-button wide" id="race-again"><span>RACE AGAIN</span><b>↗</b></button><button class="text-button" id="results-home">RETURN TO MENU</button></div></div>
+      <div class="touch-steer" id="touch-steer"><span>STEER</span><input id="touch-steering" type="range" min="-100" max="100" value="0"></div>
+    </section>
+    <div class="toast" id="app-toast" role="status"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
